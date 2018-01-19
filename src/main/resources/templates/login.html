@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+    <title>Serwer plików</title>
+    <style>
+	div {border-radius: 5px;background-color: #f3ffea;padding: 20px;}
+	body {font-family: calibri, tahoma, arial; border-radius: 3px;background-color: #fffff8}
+	input {border-radius: 3px;}
+	button {color: #515151; border-radius: 5px;background-color: #f5fdeb; padding: 5px 15px 5px}
+	label {color: #515151}
+	fieldset  {color: #303030; border-radius: 5px;}
+	</style>
+</head>
+
+<body>
+	<center>
+    <div tiles:fragment="content" style="width: 450px">
+        <form name="f" th:action="@{/login}" method="post" style="width: 450px">               
+            <fieldset>
+                <legend><b>Logowanie</b></legend><br/>
+				<div th:if="${param.error}" style="color: red">    
+					<b>Niewłaściwa nazwa użytkownika i/lub hasło.</b>
+				</div>
+				<div th:if="${param.logout}" style="color: green"> 
+					<b>Zostałeś wylogowany.</b>
+				</div>
+				<table>
+					<tr><td><label for="username" align="left">Nazwa użytkownika:</label></td></tr>
+					<tr><td><input type="text" id="username" name="username" size="40"/></td></tr>
+					<tr><td><label for="password" align="left">Hasło:</label></td></tr>
+					<tr><td><input type="password" id="password" name="password" size="40"/></td></tr>    
+					<tr><td><button type="submit" class="btn"><b>Zaloguj</b></button></td></tr>
+				</table>
+				
+            </fieldset>
+        </form>
+    </div>
+	</center>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<body>
+	<title>Serwer plików</title>
+    <style>
+	div {border-radius: 5px;background-color: #f3ffea;padding: 20px;}
+	.topbar {background-color: #a0ea4f; border-radius: 0px; text-align: right; padding: 10px;}
+	body {font-family: calibri, tahoma, arial; border-radius: 3px;background-color: #fffff8}
+	input {border-radius: 3px;}
+	button {color: #515151; border-radius: 5px;background-color: #f5fdeb; padding: 5px 15px 5px}
+	label {color: #515151}
+	fieldset  {color: #303030; border-radius: 5px;}
+	.noMargin {margin: 0;padding: 0;}
+	</style>
+	
+	<div class="topbar">
+		<b>
+		<p th:text="'Zalogowano:' + ${userName}" class="noMargin">Zalogowano:</p>
+		<a href="/logout" class="noMargin">Wyloguj</a>
+		</b>
+	</div>
+	
+	<div th:if="${message}">
+		<h2 th:text="${message}"/>
+	</div>
+
+	<div>
+		<form method="POST" enctype="multipart/form-data" action="/">
+			<table>
+				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+			</table>
+		</form>
+	</div>
+
+	<div>
+		<ul>
+			<li th:each="file : ${files}">
+				<a th:href="${file}" th:text="${file}" />
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
