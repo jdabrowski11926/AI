@@ -19,6 +19,17 @@ public class User {
 	@Column(unique=true)
 	private String email;
 	
+	public User(User user) {
+		this.id = user.id;
+		this.name = user.name;
+		this.password = user.password;
+		this.email = user.email;
+	}
+	
+	public User() {
+		
+	}
+	
 	public Integer getId() {
 		return id;
 	}
